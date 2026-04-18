@@ -1,7 +1,9 @@
+console.log("🔥 NEW APP.JS LOADED 🔥");
+
 // ================= SESSION CHECK =================
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-// If user is logged in, prevent going back to login/register
+// Prevent logged-in users from going back
 if (currentUser) {
   if (
     window.location.pathname.includes("login.html") ||
@@ -10,7 +12,6 @@ if (currentUser) {
     window.location.href = "dashboard.html";
   }
 }
-
 
 // ================= REGISTER =================
 const form = document.getElementById("registerForm");
@@ -32,25 +33,24 @@ if (form) {
       return;
     }
 
-const hashedPassword = btoa(password);
+    // Encode password (basic security)
+    const hashedPassword = btoa(password);
 
-const newUser = {
-  username,
-  email,
-  password: hashedPassword,
-  balance: 0,
-  transactions: []
-};
+    const newUser = {
+      username,
+      email,
+      password: hashedPassword,
+      balance: 0,
+      transactions: []
+    };
 
     users.push(newUser);
-
     localStorage.setItem("users", JSON.stringify(users));
 
     alert("Registration successful!");
     window.location.href = "login.html";
   });
 }
-
 
 // ================= LOGIN =================
 const loginForm = document.getElementById("loginForm");
@@ -66,11 +66,9 @@ if (loginForm) {
 
     const hashedInput = btoa(password);
 
-const hashedInput = btoa(password);
-
-const user = users.find(
-  u => u.email === email && u.password === hashedInput
-);
+    const user = users.find(
+      u => u.email === email && u.password === hashedInput
+    );
 
     if (user) {
       localStorage.setItem("currentUser", JSON.stringify(user));
@@ -81,7 +79,6 @@ const user = users.find(
     }
   });
 }
-
 
 // ================= DASHBOARD LOAD =================
 if (window.location.pathname.includes("dashboard.html")) {
@@ -97,7 +94,6 @@ if (window.location.pathname.includes("dashboard.html")) {
   }
 }
 
-
 // ================= DEPOSIT =================
 function deposit() {
   const amount = Number(document.getElementById("depositAmount").value);
@@ -108,12 +104,11 @@ function deposit() {
     user.balance += amount;
 
     user.transactions.push({
-  type: "deposit",
-  amount,
-  date: new Date().toLocaleString()
-});
+      type: "deposit",
+      amount,
+      date: new Date().toLocaleString()
+    });
 
-    // Update user in users array
     const index = users.findIndex(u => u.email === user.email);
     users[index] = user;
 
@@ -125,7 +120,6 @@ function deposit() {
     alert("Enter a valid amount");
   }
 }
-
 
 // ================= SEND MONEY =================
 function transferMoney() {
@@ -160,22 +154,21 @@ function transferMoney() {
   // Deduct from sender
   currentUser.balance -= amount;
   currentUser.transactions.push({
-  type: "send",
-  amount,
-  to: recipient.email,
-  date: new Date().toLocaleString()
-});
+    type: "send",
+    amount,
+    to: recipient.email,
+    date: new Date().toLocaleString()
+  });
 
   // Add to recipient
   recipient.balance += amount;
- recipient.transactions.push({
-  type: "deposit",
-  amount,
-  from: currentUser.email,
-  date: new Date().toLocaleString()
-});
+  recipient.transactions.push({
+    type: "deposit",
+    amount,
+    from: currentUser.email,
+    date: new Date().toLocaleString()
+  });
 
-  // Update users array
   const senderIndex = users.findIndex(u => u.email === currentUser.email);
   const recipientIndex = users.findIndex(u => u.email === recipient.email);
 
@@ -207,7 +200,6 @@ function displayTransactions(transactions) {
     text += ` (${t.date})`;
 
     li.textContent = text;
-
     list.appendChild(li);
   });
 }
