@@ -1,4 +1,4 @@
-console.log("🔥 NEW APP.JS LOADED 🔥");
+console.log("NEW APP JS LOADED");
 
 // ================= SESSION CHECK =================
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
