@@ -32,13 +32,17 @@ if (form) {
       return;
     }
 
-    const newUser = {
-      username,
-      email,
-      password,
-      balance: 0,
-      transactions: []
-    };
+   const hashedPassword = btoa(password);
+
+const hashedPassword = btoa(password);
+
+const newUser = {
+  username,
+  email,
+  password: hashedPassword,
+  balance: 0,
+  transactions: []
+};
 
     users.push(newUser);
 
@@ -62,9 +66,13 @@ if (loginForm) {
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    const user = users.find(
-      u => u.email === email && u.password === password
-    );
+    const hashedInput = btoa(password);
+
+const hashedInput = btoa(password);
+
+const user = users.find(
+  u => u.email === email && u.password === hashedInput
+);
 
     if (user) {
       localStorage.setItem("currentUser", JSON.stringify(user));
