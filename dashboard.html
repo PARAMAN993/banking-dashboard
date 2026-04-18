@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <h2>Welcome, <span id="usernameDisplay"></span></h2>
+      <button onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Balance Card -->
+    <div class="card balance-card">
+      <h4>Account Balance</h4>
+      <h2>₦<span id="balance">0</span></h2>
+    </div>
+
+    <!-- Actions -->
+    <div class="card">
+      <h4>Deposit</h4>
+      <input type="number" id="depositAmount" placeholder="Enter amount">
+      <button onclick="deposit()">Deposit</button>
+    </div>
+
+    <div class="card">
+      <h4>Transfer Money</h4>
+      <input type="email" id="recipientEmail" placeholder="Recipient Email">
+      <input type="number" id="sendAmount" placeholder="Enter amount">
+      <button onclick="transferMoney()">Send</button>
+    </div>
+
+    <!-- Transactions -->
+    <div class="card">
+      <h4>Transaction History</h4>
+      <ul id="transactionsList"></ul>
+    </div>
+
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

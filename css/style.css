@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+  margin: 0;
+}
+
+.container {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card {
+  background: #1e293b;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.balance-card {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #22c55e;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #16a34a;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #334155;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.deposit {
+  color: #22c55e;
+}
+
+.send {
+  color: #ef4444;
+}
