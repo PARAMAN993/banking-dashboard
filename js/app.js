@@ -32,8 +32,6 @@ if (form) {
       return;
     }
 
-   const hashedPassword = btoa(password);
-
 const hashedPassword = btoa(password);
 
 const newUser = {
